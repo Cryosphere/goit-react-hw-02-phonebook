@@ -4,14 +4,13 @@ import style from './ContactForm.module.css';
 
 
 const INITIAL_STATE = {
-    id: '',
     name: '',
     number: ''
 };
 
 export class ContactForm extends Component {
     state = { ...INITIAL_STATE };
-    id = nanoid();
+   
 
     handleChange = e => {
         const { name, value } = e.target;
@@ -20,7 +19,7 @@ export class ContactForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.onSubmit({ ...this.state });
+        this.props.onSubmit({ ...this.state, id:nanoid() });
         this.reset();
     };
 
